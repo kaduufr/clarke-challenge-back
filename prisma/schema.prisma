@@ -13,9 +13,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model CountryStates {
-  id        Int      @id @default(autoincrement())
+model Region {
+  id        Int       @id @default(autoincrement())
   name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  companies Company[]
+}
+
+model Company {
+  id           Int      @id @default(autoincrement())
+  name         String
+  logo         String
+  totalClients Int      @default(0)
+  costKWH      Decimal  @default(0) @db.Decimal(10, 2)
+  minLimitKWH  Decimal  @default(0) @db.Decimal(10, 2)
+  totalRatings Int      @default(0)
+  sumRatings   Decimal  @default(0) @db.Decimal(10, 2)
+  regionId     Int
+  region       Region   @relation(fields: [regionId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

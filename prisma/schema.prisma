@@ -16,6 +16,7 @@ datasource db {
 model Region {
   id        Int       @id @default(autoincrement())
   name      String
+  uf        String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   companies Company[]

@@ -8,8 +8,8 @@ const prismaClient = new PrismaClient();
 async function main() {
   console.log('Rodando seeds...');
 
-  // await seedRegions();
-  // await seedCompany();
+  await seedRegions();
+  await seedCompany();
   console.log('Seeds rodados com sucesso!');
 }
 
